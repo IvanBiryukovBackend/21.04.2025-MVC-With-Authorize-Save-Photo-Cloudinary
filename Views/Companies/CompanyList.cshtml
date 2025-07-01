@@ -1,0 +1,56 @@
+﻿@using ASPNETCoreMVCWithAuth.Domains
+@model IEnumerable<Company>
+
+@{
+    ViewData["Title"] = "List Companies";
+}
+
+<h2>Список компаний</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Information)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Founded)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Industry)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Information)
+            </td>
+            <td>
+                <a>
+                    <img src="@item.Image" width="200" height="200" />
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Founded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Industry)
+            </td>
+            <td>
+                @Html.ActionLink("Edit Company","Edit", new {id = item.CompanyId})
+            </td>
+            <td>
+                @Html.ActionLink("Delete Company", "Delete", new { id = item.CompanyId })
+            </td>
+        </tr>
+    };
+</table>
